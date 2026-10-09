@@ -7,21 +7,15 @@ A modern, minimalist centered command-line (`cmdline`) and search menu for Neovi
 
 ---
 
-## ✨ Features
+## Features
 
-- 🎯 **Centered Floating Window**: Command line and search positioned in the center of the screen.
-- ⚡ **Native Execution**: Full compatibility with Neovim commands (`:w`, `:q`, `:FdFuzzyFind`, `:set number`, etc.).
-- 🔍 **Smart Search (`/` and `?`)**:
-  - Instant live preview in the buffer as you type (`incsearch` style).
-  - Real-time match counter aligned to the right (e.g. ` 1/12 ` or ` 0/0 `).
-  - Support for reverse (`?`) and forward (`/`) search.
-  - Updates the search register `@/`, letting you navigate results with `n` and `N`.
-- 📐 **Visual Mode Support**: Pressing `:` with selected text automatically fills the `:'<,'>` range.
-- 📜 **Full History**: Navigate command and search history with `<Up>` / `<Down>` and `<C-p>` / `<C-n>`.
-- 💡 **Autocomplete Dropdown**: Suggestions dropdown with `<Tab>` and `<S-Tab>`, keeping the selected item highlighted.
-- 🎨 **Fully Customizable**: Theme support via dedicated highlight groups (`CentMenuNormal`, `CentMenuBorder`, `CentMenuCompSel`, `CentMenuCount`).
-- 🔄 **Dynamic Resizing**: Automatically adapts when the terminal window is resized (`VimResized`).
-- 🚀 **Light and Fast**: Zero external dependencies, pure Lua.
+- Centered floating window for command-line (`:`) and search (`/`, `?`).
+- Live search preview with a match counter and `@/` register support.
+- Visual mode: `:` pre-fills the `:'<,'>` range.
+- Command/search history (`<Up>`/`<Down>`, `<C-p>`/`<C-n>`).
+- Autocomplete dropdown (`<Tab>`/`<S-Tab>`).
+- Customizable via highlight groups.
+- Zero dependencies, pure Lua.
 
 ---
 
