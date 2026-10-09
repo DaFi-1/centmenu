@@ -1,36 +1,36 @@
 # centmenu.nvim
 
-Um menu de comandos (`cmdline`) e busca centralizado, moderno e minimalista para Neovim escrito em Lua.
+A modern, minimalist centered command-line (`cmdline`) and search menu for Neovim, written in Lua.
 
 ![Neovim](https://img.shields.io/badge/Neovim-0.9+-green.svg?style=flat-square&logo=neovim)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
 
 ---
 
-## ✨ Características
+## ✨ Features
 
-- 🎯 **Janela Flutuante Centralizada**: Linha de comandos e busca posicionadas no centro da tela.
-- ⚡ **Execução Nativa**: Compatibilidade total com comandos do Neovim (`:w`, `:q`, `:FdFuzzyFind`, `:set number`, etc.).
-- 🔍 **Busca Inteligente (`/` e `?`)**:
-  - Live preview instantâneo no buffer enquanto você digita (estilo `incsearch`).
-  - Contador de correspondências em tempo real alinhado à direita (ex: ` 1/12 ` ou ` 0/0 `).
-  - Suporte a busca reversa (`?`) e direta (`/`).
-  - Atualiza o registro de busca `@/`, permitindo navegar nos resultados normalmente com `n` e `N`.
-- 📐 **Suporte ao Modo Visual**: Pressionar `:` com texto selecionado preenche automaticamente o intervalo `:'<,'>`.
-- 📜 **Histórico Completo**: Navegação no histórico de comandos e de buscas com `<Up>` / `<Down>` e `<C-p>` / `<C-n>`.
-- 💡 **Autocompletar com Dropdown**: Menu suspenso de sugestões com `<Tab>` e `<S-Tab>`, mantendo o item selecionado em destaque.
-- 🎨 **Totalmente Customizável**: Suporte a temas através de highlight groups dedicados (`CentMenuNormal`, `CentMenuBorder`, `CentMenuCompSel`, `CentMenuCount`).
-- 🔄 **Redimensionamento Dinâmico**: Adapta-se automaticamente ao redimensionar a janela do terminal (`VimResized`).
-- 🚀 **Leve e Rápido**: Zero dependências externas, puro Lua.
+- 🎯 **Centered Floating Window**: Command line and search positioned in the center of the screen.
+- ⚡ **Native Execution**: Full compatibility with Neovim commands (`:w`, `:q`, `:FdFuzzyFind`, `:set number`, etc.).
+- 🔍 **Smart Search (`/` and `?`)**:
+  - Instant live preview in the buffer as you type (`incsearch` style).
+  - Real-time match counter aligned to the right (e.g. ` 1/12 ` or ` 0/0 `).
+  - Support for reverse (`?`) and forward (`/`) search.
+  - Updates the search register `@/`, letting you navigate results with `n` and `N`.
+- 📐 **Visual Mode Support**: Pressing `:` with selected text automatically fills the `:'<,'>` range.
+- 📜 **Full History**: Navigate command and search history with `<Up>` / `<Down>` and `<C-p>` / `<C-n>`.
+- 💡 **Autocomplete Dropdown**: Suggestions dropdown with `<Tab>` and `<S-Tab>`, keeping the selected item highlighted.
+- 🎨 **Fully Customizable**: Theme support via dedicated highlight groups (`CentMenuNormal`, `CentMenuBorder`, `CentMenuCompSel`, `CentMenuCount`).
+- 🔄 **Dynamic Resizing**: Automatically adapts when the terminal window is resized (`VimResized`).
+- 🚀 **Light and Fast**: Zero external dependencies, pure Lua.
 
 ---
 
-## 📦 Instalação
+## 📦 Installation
 
-### Usando [lazy.nvim](https://github.com/folke/lazy.nvim)
+### Using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
--- Do GitHub:
+-- From GitHub:
 {
   "DaFi-1/centmenu",
   config = function()
@@ -38,7 +38,7 @@ Um menu de comandos (`cmdline`) e busca centralizado, moderno e minimalista para
   end,
 }
 
--- Ou localmente para desenvolvimento:
+-- Or locally for development:
 {
   dir = "/home/a/dotfiles/nvim/centmenu",
   config = function()
@@ -49,56 +49,56 @@ Um menu de comandos (`cmdline`) e busca centralizado, moderno e minimalista para
 
 ---
 
-## ⚙️ Configuração
+## ⚙️ Configuration
 
-Configurações padrão:
+Default settings:
 
 ```lua
 require("centmenu").setup({
-  width = 0.25,             -- Largura relativa da janela (25% da tela)
-  border = "rounded",       -- Estilo da borda: "rounded", "single", "double", "solid", etc.
-  prompt = ": ",            -- Prefixo exibido na linha de comando
-  title = " Command ",      -- Título da janela de comandos
-  enable_history = true,    -- Habilita navegação no histórico
-  enable_completion = true, -- Habilita dropdown de autocompletar
-  max_show = 10,            -- Número máximo de itens no dropdown
-  enable_search = true,     -- Habilita substituição de busca (/ e ?)
+  width = 0.25,             -- Relative window width (25% of the screen)
+  border = "rounded",       -- Border style: "rounded", "single", "double", "solid", etc.
+  prompt = ": ",            -- Prefix shown on the command line
+  title = " Command ",      -- Command window title
+  enable_history = true,    -- Enable history navigation
+  enable_completion = true, -- Enable autocomplete dropdown
+  max_show = 10,            -- Maximum number of items in the dropdown
+  enable_search = true,     -- Enable search replacement (/ and ?)
 })
 ```
 
 ---
 
-## ⌨️ Teclas de Atalho
+## ⌨️ Keymaps
 
-### Comandos (`:`)
+### Commands (`:`)
 
-| Tecla | Ação |
+| Key | Action |
 |---|---|
-| `:` (Modo Normal) | Abre o menu centralizado de comandos |
-| `:` (Modo Visual) | Abre o menu centralizado com `:'<,'>` preenchido |
-| `<CR>` | Executa o comando digitado |
-| `<Esc>` / `<C-c>` | Fecha o menu sem executar |
-| `<Tab>` / `<S-Tab>` | Abre o dropdown e avança/recua na lista de autocompletar |
-| `<C-n>` / `<C-p>` | Seleciona sugestão seguinte/anterior (se aberto) ou navega no histórico |
-| `<Up>` / `<Down>` | Navega pelo histórico de comandos do Neovim |
-| `<BS>` | Apaga o caractere anterior (preserva o prompt inicial) |
+| `:` (Normal Mode) | Open the centered command menu |
+| `:` (Visual Mode) | Open the centered menu with `:'<,'>` filled |
+| `<CR>` | Execute the typed command |
+| `<Esc>` / `<C-c>` | Close the menu without executing |
+| `<Tab>` / `<S-Tab>` | Open the dropdown and move forward/backward in the autocomplete list |
+| `<C-n>` / `<C-p>` | Select next/previous suggestion (if open) or navigate history |
+| `<Up>` / `<Down>` | Navigate Neovim's command history |
+| `<BS>` | Delete the previous character (keeps the initial prompt) |
 
-### Busca (`/` e `?`)
+### Search (`/` and `?`)
 
-| Tecla | Ação |
+| Key | Action |
 |---|---|
-| `/` (Modo Normal) | Abre a busca direta centralizada |
-| `?` (Modo Normal) | Abre a busca reversa centralizada |
-| `<CR>` | Confirma a busca e salta para a correspondência |
-| `<Esc>` / `<C-c>` | Cancela a busca e restaura o cursor e a visão original |
-| `<Up>` / `<Down>` | Navega pelo histórico de buscas |
-| `<C-p>` / `<C-n>` | Navega pelo histórico de buscas |
+| `/` (Normal Mode) | Open centered forward search |
+| `?` (Normal Mode) | Open centered reverse search |
+| `<CR>` | Confirm the search and jump to the match |
+| `<Esc>` / `<C-c>` | Cancel the search and restore the original cursor and view |
+| `<Up>` / `<Down>` | Navigate search history |
+| `<C-p>` / `<C-n>` | Navigate search history |
 
 ---
 
-## 🎨 Cores e Destaques (Highlights)
+## 🎨 Colors and Highlights
 
-Você pode personalizar as cores sobrescrevendo os seguintes grupos de destaque no seu colorscheme ou `init.lua`:
+You can customize the colors by overriding the following highlight groups in your colorscheme or `init.lua`:
 
 ```lua
 vim.api.nvim_set_hl(0, "CentMenuNormal",  { bg = "#000000", fg = "#ffffff" })
@@ -107,10 +107,10 @@ vim.api.nvim_set_hl(0, "CentMenuCompSel", { bg = "#ffffff", fg = "#000000", bold
 vim.api.nvim_set_hl(0, "CentMenuCount",   { bg = "#000000", fg = "#888888" })
 ```
 
-> **Compatibilidade**: Os grupos legados `MenuCenter*` continuam funcionando como links para `CentMenu*`.
+> **Compatibility**: The legacy `MenuCenter*` groups keep working as links to `CentMenu*`.
 
 ---
 
-## 📄 Licença
+## 📄 License
 
-Distribuído sob a licença MIT.
+Distributed under the MIT license.
